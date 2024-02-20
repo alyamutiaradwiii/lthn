@@ -42,6 +42,7 @@
 										</div>
 									</div>
 										<div class="card-body">
+										@include('_component.message')
 										<div class="table-responsive mb-0">
 											<table class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap table-striped ">
 												<thead>
@@ -63,7 +64,14 @@
 														<td>{{ $item->penulis }}</td>
 														<td>{{ $item->penerbit }}</td>
 														<td>{{ $item->tahunTerbit }}</td>
-														<td>//</td>
+														<td>
+															<form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('buku.destroy', $item->id)}}" method="POST">
+																@csrf
+																@method('DELETE')
+																<a href="{{ route('buku.edit', $item->id)}}" title="Edit" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+																<button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash" title="Edit"></i></button>
+															</form>
+														</td>
 													</tr>		
 													@endforeach
 												</tbody>

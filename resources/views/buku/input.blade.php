@@ -12,7 +12,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
 
-                    <li class="breadcrumb-item"><a href="{{route('buku')}}">Data Buku</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('buku.index')}}">Data Buku</a></li>
                     <li class="breadcrumb-item text-white active">Form Input Buku</li>
                 </ol>
             </nav>
@@ -28,10 +28,9 @@
                     </div>
                     <p class="mg-b-20">Silahkan isi form di bawah ini dengan lengkap.</p>
                     <!-- message info -->
-                    {{-- @include('_component.message') --}}
+                    @include('_component.message')
                     <div class="pd-10 pd-sm-20 bg-gray-100">
-                        <form action="{{ route('buku.create')}}" method="post" enctype="multipart/form-data">
-                          
+                        <form action="{{ route('buku.create')}}" method="post" enctype="multipart/form-data"> 
                             @csrf
                         <div class="row">
                         <div class="col-md-12">
@@ -78,7 +77,7 @@
                         </div>
                         <button type="submit" class="float-right btn btn-primary pd-x-30 mg-e-5 mg-t-5">
                             <i class='fa fa-save'></i> Simpan</button>
-                        <a href="{{route('buku')}}" class="btn btn-secondary pd-x-30 mg-t-5">
+                        <a href="{{route('buku.index')}}" class="btn btn-secondary pd-x-30 mg-t-5">
                             <i class='fa fa-chevron-left'></i> Kembali</a>
                         </form>
                     </div>

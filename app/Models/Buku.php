@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Buku extends Model
 {
-    protected $table = "bukus";
-    protected $primaryKey = "id";
-    protected $fillable = [
-        'id','judul','penulis','penerbit','tahunTerbit'
-    ];
+    protected $guarded = ['id'];
 
     public function relasi() 
     {

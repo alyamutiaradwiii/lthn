@@ -40,13 +40,30 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        Buku::create([
+        $request->validate(
+            [
+                'judul' => 'required',
+                'penulis' => 'required',
+                'penerbit' => 'required',
+                'tahunTerbit' => 'required|max:4',
+            ],
+            [
+                'judul.required' => 'judul wajib diisi',
+                'penulis.required' => 'penulis wajib diisi',
+                'penerbit.required' => 'penerbit wajib diisi',
+                'tahunTerbit.required' => 'tahun terbit wajib diisi',
+            ],
+        );
+
+        $buku = [
             'judul' => $request->judul,
             'penulis' => $request->penulis,
             'penerbit' => $request->penerbit,
             'tahunTerbit' => $request->tahunTerbit,
-        ]);
-        return redirect()->route('buku')->with('success', 'Data berhasil disimpan');
+        ];
+
+        Buku::create($buku);
+        return redirect()->route('buku.index')->with('success', 'Data Berhasil diSimpan');
     }
 
     /**
@@ -68,7 +85,8 @@ class BukuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $buku = Buku::findorfail($id);
+        return view('buku.edit', compact('buku'));
     }
 
     /**
@@ -80,7 +98,10 @@ class BukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $buku = Buku::findorfail($id);
+        $buku->update($request->all());
+
+        return redirect()->route('buku.index')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -91,6 +112,10 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $buku = Buku::findorfail($id);
+
+        $buku->delete();
+
+        return redirect()->route('buku.index')->with('success', 'Data berhasil dihapus');
     }
 }
