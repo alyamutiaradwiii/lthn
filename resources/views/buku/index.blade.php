@@ -27,6 +27,7 @@
 											<div class="col-md-6">
 												<div class="d-flex my-auto btn-list justify-content-end">
 													<a href="{{ route('buku.input') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah</a>
+													<a href="{{ route('export_pdf_buku') }}" class="btn btn-sm btn-danger"><i class="fe fe-upload"></i> export PDF</a>
 													 {{-- <button onclick="formImport()" class="btn btn-sm btn-secondary"><i class="fa fa-upload me-2"></i> Import</button>
 													<div class="dropdown">
 														<button type="button" class="btn btn-sm btn-success dropdown-toggle" data-bs-toggle="dropdown">

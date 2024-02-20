@@ -46,7 +46,7 @@
                             
                             <div class="dropdown main-profile-menu nav nav-item nav-link">
                                 <a class="profile-user d-flex" href=""><img src="{{asset('')}}../assets/img/faces/6.jpg" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
-
+ 
                                 <div class="dropdown-menu">
                                     <div class="main-header-profile header-img">
                                         {{-- <td><img width="100px" height="60px" class="rounded-5" src="@if($dt->img) {{asset('')}}images/user/{{$dt->img}} @else {{asset('')}}images/no-user.png @endif" style="object-fit:cover"> </td> --}}
@@ -54,12 +54,9 @@
                                     </div>
                                     <!-- <a class="dropdown-item" href=""><i class="far fa-user"></i> My Profile</a>
                                     <a class="dropdown-item" href=""><i class="far fa-clock"></i> Activity Logs</a> -->
-                                    <form method="POST" action="">
-                                        @csrf
                                         <div class="row mb-3 px-3"> 
-                                            <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                             <div class="dropdown main-header-message right-toggle">
