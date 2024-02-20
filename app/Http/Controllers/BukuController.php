@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
-use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BukuController extends Controller
 {
@@ -130,9 +131,27 @@ class BukuController extends Controller
         $pdf = PDF::loadview('buku.exportPdf', ['buku'=>$buku]);
         $pdf->setPaper('a4', 'portrait');
         $pdf->setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+
         // SET FILE NAME
         $filename = date('YmdHis') . '_buku';
+
         // untuk mendownload file pdf
         return $pdf->download($filename.'.pdf');
+    }
+
+    public function export_excel()
+    {
+        $buku = Buku::select('*');
+        
+        $buku = $buku->get();
+
+        //untuk mengexport class
+        $export = new DataBukuExportView($buku);
+
+        // SET FILE NAME
+        $filename = date('YmdHis') . '_buku';
+
+        // untuk mendownload file excel
+        return Excel::download($export, $filename . '_xlsx');
     }
 }
