@@ -26,9 +26,10 @@
 											</div>
 											<div class="col-md-6">
 												<div class="d-flex my-auto btn-list justify-content-end">
-													<a href="{{ route('buku.input') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah</a>
-													<a href="{{ route('buku.input') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Export Excel</a>
-													<a href="{{ route('export_pdf_buku') }}" class="btn btn-sm btn-danger"><i class="fe fe-upload"></i> export PDF</a>
+													<a href="{{ route('buku.input') }}" class="btn btn-info"><i class="fa fa-plus"></i> Tambah</a>
+													<a href="{{ route('export_excel_buku') }}" class="btn btn-success"><i class="fa fa-plus"></i> Export Excel</a>
+													<a href="{{ route('export_pdf_buku') }}" class="btn btn-danger"><i class="fe fe-upload"></i> export PDF</a>
+													<a class="modal-effect btn btn-dark" data-bs-effect="effect-rotate-bottom" data-bs-toggle="modal" href="#modaldemo8"><i class="fe fe-download"></i> Import Excel</a>
 													 {{-- <button onclick="formImport()" class="btn btn-sm btn-secondary"><i class="fa fa-upload me-2"></i> Import</button>
 													<div class="dropdown">
 														<button type="button" class="btn btn-sm btn-success dropdown-toggle" data-bs-toggle="dropdown">
@@ -84,5 +85,7 @@
 								</div>
 							</div>
 						</div>
+
+@include('buku.modal_import')
 
 @endsection
