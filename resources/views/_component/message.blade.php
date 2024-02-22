@@ -22,11 +22,15 @@
     <strong>{!!session('failed')!!}</strong>
 </div>
 @endif
-@if(session()->has('error'))
-<div class="alert alert-danger mg-b-0" role="alert">
-    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    <strong>{!!session('error')!!}</strong>
+{{-- PESAN EROR --}}    
+@if($errors->any())
+<div class="pt-3">
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $item)
+                <li>{{ $item }}</li>
+            @endforeach
+        </ul>
+    </div>
 </div>
 @endif
