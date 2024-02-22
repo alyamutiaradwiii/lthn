@@ -28,7 +28,13 @@
 												<div class="d-flex my-auto btn-list justify-content-end">
 													<a href="{{ route('buku.input') }}" class="btn btn-info"><i class="fa fa-plus"></i> Tambah</a>
 													<a href="{{ route('export_excel_buku') }}" class="btn btn-success"><i class="fa fa-plus"></i> Export Excel</a>
+													@if (auth()->user()->role == 'petugas')
 													<a href="{{ route('export_pdf_buku') }}" class="btn btn-danger"><i class="fe fe-upload"></i> export PDF</a>
+													@elseif (auth()->user()->role == 'admin')
+													<a href="{{ route('export_pdf_buku') }}" class="btn btn-danger"><i class="fe fe-upload"></i> export PDF</a>			
+													@else
+														
+													@endif
 													<a class="modal-effect btn btn-dark" data-bs-effect="effect-rotate-bottom" data-bs-toggle="modal" href="#modaldemo8"><i class="fe fe-download"></i> Import Excel</a>
 													 {{-- <button onclick="formImport()" class="btn btn-sm btn-secondary"><i class="fa fa-upload me-2"></i> Import</button>
 													<div class="dropdown">

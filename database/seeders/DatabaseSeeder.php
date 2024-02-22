@@ -23,11 +23,20 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
-            'username' => 'admin1',
-            'email' => 'admin1@gmail.com',
+            'username' => 'petugas1',
+            'email' => 'petugas1@gmail.com',
             'password' => Hash::make('12345678'),
             'namaLengkap' => 'Alya Mutiara',
-            'role' => 'admin',
+            'role' => 'petugas',
+            'verifikasi' => 'sudah',
+            'alamat' => 'cikuda'
+        ]);
+        User::create([
+            'username' => 'peminjam1',
+            'email' => 'peminjam1@gmail.com',
+            'password' => Hash::make('12345678'),
+            'namaLengkap' => 'Alya Mutiara',
+            'role' => 'peminjam',
             'verifikasi' => 'sudah',
             'alamat' => 'cikuda'
         ]);
